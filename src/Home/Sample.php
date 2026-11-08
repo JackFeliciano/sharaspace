@@ -5,57 +5,57 @@ declare(strict_types=1);
 namespace Sharaspace\Home;
 
 /**
- * The rooms and the diary the demo shows. Every figure on the page comes out of
- * these objects, so the page cannot claim a booking the code does not hold.
+ * The spaces and the calendars the demo shows. Every figure on the page comes out
+ * of these objects, so the page cannot claim a lease the code does not hold.
  */
 final class Sample
 {
-    /** @var list<Diary> */
-    private array $diaries = [];
+    /** @var list<Calendar> */
+    private array $calendars = [];
 
     public function __construct()
     {
-        $loft = new Room('ss-1', 'The Loft', 'Porto', 40, '24000', ['natural light', 'projector', 'kitchen'], true);
-        $diary = new Diary($loft);
-        $diary->book('bk-1', 'Mara Lind', new Slot('2026-12-05', 9, 13))->confirm();
-        $diary->book('bk-2', 'Bright Field', new Slot('2026-12-05', 18, 22));
-        $this->diaries[] = $diary;
+        $floor = new Space('ss-1', 'Rua das Flores 2nd floor', 'Porto', 'office', '24000', ['fitted kitchen', 'eighty desks', 'fibre'], true);
+        $calendar = new Calendar($floor);
+        $calendar->let('ls-1', 'Mara Lind', new Term(Term::WEEK, 2), '2026-12-07');
+        $calendar->let('ls-2', 'Bright Field', new Term(Term::MONTH, 3), '2026-12-21');
+        $this->calendars[] = $calendar;
 
-        $hall = new Room('ss-2', 'The Hall', 'Lisbon', 120, '60000', ['stage', 'sound desk', 'bar'], true);
-        $diary2 = new Diary($hall);
-        $diary2->book('bk-3', 'Kestrel Works', new Slot('2027-01-16', 20, 24))->confirm();
-        $this->diaries[] = $diary2;
+        $room = new Space('ss-2', 'The back room', 'Lisbon', 'restaurant', '60000', ['forty covers', 'service bar', 'extraction'], true);
+        $calendar2 = new Calendar($room);
+        $calendar2->let('ls-3', 'Kestrel Works', new Term(Term::MONTH, 12), '2027-01-04');
+        $this->calendars[] = $calendar2;
 
-        $studio = new Room('ss-3', 'Garden Studio', 'Coimbra', 8, '9000', ['daylight', 'whiteboard'], false);
-        $this->diaries[] = new Diary($studio);
+        $bay = new Space('ss-3', 'Loading bay 4', 'Coimbra', 'warehouse', '9000', ['roller door', 'three phase power'], false);
+        $this->calendars[] = new Calendar($bay);
     }
 
-    /** @return list<Diary> */
-    public function diaries(): array
+    /** @return list<Calendar> */
+    public function calendars(): array
     {
-        return $this->diaries;
+        return $this->calendars;
     }
 
     public function count(): int
     {
-        return count($this->diaries);
+        return count($this->calendars);
     }
 
     public function taken(): int
     {
         $sum = 0;
-        foreach ($this->diaries as $diary) {
-            $sum += $diary->taken();
+        foreach ($this->calendars as $calendar) {
+            $sum += $calendar->taken();
         }
 
         return $sum;
     }
 
-    public function takings(): int
+    public function billing(): int
     {
         $sum = 0;
-        foreach ($this->diaries as $diary) {
-            $sum += $diary->takings();
+        foreach ($this->calendars as $calendar) {
+            $sum += $calendar->billing();
         }
 
         return $sum;

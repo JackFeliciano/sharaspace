@@ -26,9 +26,9 @@ final class Front
         ]]);
         $router->get('/health', static fn (): array => [200, ['json' => [
             'ok' => true,
-            'rooms' => (new Sample())->count(),
-            'bookings' => (new Sample())->taken(),
-            'takings_cents' => (new Sample())->takings(),
+            'spaces' => (new Sample())->count(),
+            'leases' => (new Sample())->taken(),
+            'billing_cents' => (new Sample())->billing(),
         ]]]);
 
         [$status, $body] = $router->handle(

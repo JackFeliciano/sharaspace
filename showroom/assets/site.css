@@ -34,9 +34,9 @@ p { margin: 0 0 1rem; }
   padding-top: 0.7rem;
 }
 
-.rooms { display: grid; gap: 1.5rem; margin: 1.5rem 0; }
+.spaces { display: grid; gap: 1.5rem; margin: 1.5rem 0; }
 
-.room {
+.space {
   border: 1px solid var(--rule);
   padding: 1rem 1.2rem;
   background: #fff;
@@ -44,7 +44,7 @@ p { margin: 0 0 1rem; }
 
 .where, .host, .wait { font-size: 0.92rem; color: #444; }
 
-.counts {
+.figures {
   display: grid;
   grid-template-columns: max-content 1fr;
   gap: 0.25rem 1rem;
@@ -52,12 +52,12 @@ p { margin: 0 0 1rem; }
   font-size: 0.92rem;
 }
 
-.counts dt { color: #666; }
-.counts dd { margin: 0; font-variant-numeric: tabular-nums; }
+.figures dt { color: #666; }
+.figures dd { margin: 0; font-variant-numeric: tabular-nums; }
 
-table.diary { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin-top: 0.6rem; }
-table.diary th, table.diary td { text-align: left; padding: 0.3rem 0.5rem; border-bottom: 1px solid var(--rule); }
-table.diary th { color: #666; font-weight: normal; }
+table.calendar { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin-top: 0.6rem; }
+table.calendar th, table.calendar td { text-align: left; padding: 0.3rem 0.5rem; border-bottom: 1px solid var(--rule); }
+table.calendar th { color: #666; font-weight: normal; }
 
 .steps { padding-left: 1.2rem; font-size: 0.95rem; }
 .steps li { margin-bottom: 0.6rem; }
